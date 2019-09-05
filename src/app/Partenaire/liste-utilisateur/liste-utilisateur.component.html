@@ -1,0 +1,111 @@
+
+    <div class="wrapper">
+      <div class="sidebar" data-image="/../../../assets/img/sidebar-5.jpg">
+          <!--
+      Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+      Tip 2: you can also add an image using data-image tag
+  -->
+          <div class="sidebar-wrapper">
+              <div class="logo">
+                  <a class="simple-text">
+                      Creative Tim
+                  </a>
+              </div>
+              <ul class="nav">
+              
+                  <li>
+                      <a class="nav-link" routerLink="/signup">
+                          <i class="nc-icon nc-circle-09"></i>
+                          <p>Enregistrer un utilisateur partenaire</p>
+                      </a>
+                  </li>
+                  <li class="nav-item active">
+                      <a class="nav-link" routerLink="/liste_utilisateur">
+                          <i class="nc-icon nc-notes"></i>
+                          <p>Liste des utilisateurs</p>
+                      </a>
+                  </li>
+                  <li>
+                    <a class="nav-link" routerLink="/auth" (click)="remove()">
+                        <em class="nc-icon nc-notes"></em>
+                        <p>Se deconnecter</p>
+                    </a>
+                </li>
+                 
+              </ul>
+          </div>
+      </div>
+      <div class="main-panel">
+          <!-- Navbar -->
+          <nav class="navbar navbar-expand-lg " color-on-scroll="500">
+              <div class="container-fluid">
+                  <a class="navbar-brand" href="#pablo"> Table List </a>
+                  <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-bar burger-lines"></span>
+                      <span class="navbar-toggler-bar burger-lines"></span>
+                      <span class="navbar-toggler-bar burger-lines"></span>
+                  </button>
+                  <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                      
+                      <ul class="navbar-nav ml-auto">
+                          
+                          <li class="nav-item">
+                              <a class="nav-link" routerLink="/auth">
+                                  <span class="no-icon">Log out</span>
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </nav>
+          <!-- End Navbar -->
+          <div class="content">
+              <div class="container-fluid">
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="card strpied-tabled-with-hover">
+                              <div class="card-header ">
+                                  <h4 class="card-title">Tableau des utilisateurs</h4>
+                                  <p class="card-category">Here is a subtitle for this table</p>
+                              </div>
+                              <div class="card-body table-full-width table-responsive">
+                                  <table class="table table-hover table-striped">
+                                      <thead>
+                                          <th scope="col">ID</th>
+                                          <th scope="col">Username</th>
+                                          <th scope="col">Nom Complet</th>
+                                          <th scope="col">Propriétaire</th>
+                                          <th scope="col">Raison Social</th>
+                                          <th scope="col">Ninea</th>
+                                          <th scope="col">Adresse</th>
+                                          <th scope="col">Status</th>
+                                          <th scope="col">Bloquer/Debloquer</th>
+                                      </thead>
+                                    
+                                          <tbody>
+                                              <tr *ngFor="let us of user">
+                                                <th scope="row" id="fa">{{ us.id }}</th>
+                                                <td>{{ us.username }}</td>
+                                                <td>{{ us.nomComplet }}</td>
+                                                <td>{{ us.proprietaire }}</td>
+                                                <td>{{us.partenaire.raisonSocial}}</td>
+                                                <td>{{us.partenaire.ninea}}</td>
+                                                <td>{{us.partenaire.adresse}}</td>
+                                                <td>{{us.status}}</td>
+                                                <td><button  *ngIf="us.status=='Actif'"    (click)="bloquage(us.id)" class="btn btn-danger" routerLink="/liste_utilisateur">Bloquer</button>
+                                                <button *ngIf="us.status=='Inactif'" (click)="bloquage(us.id)"   class="btn btn-success" routerLink="/liste_utilisateur">Debloquer</button></td>
+                                              </tr>
+                                             
+                                            </tbody>
+                                  </table>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+         
+      </div>
+  </div>
+

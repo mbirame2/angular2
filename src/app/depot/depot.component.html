@@ -1,0 +1,65 @@
+<div class="wrapper">
+  <div class="sidebar" data-image="/../../../assets/img/sidebar-5.jpg">
+      <!--
+  Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+  Tip 2: you can also add an image using data-image tag
+-->
+      <div class="sidebar-wrapper">
+          <div class="logo">
+              <a class="simple-text">
+                  Creative Tim
+              </a>
+          </div>
+          <ul class="nav">
+          
+              <li class="nav-item active">
+                  <a class="nav-link" routerLink="/depot_caissier">
+                      <i class="nc-icon nc-circle-09"></i>
+                      <p>Depot du caissier</p>
+                  </a>
+              </li>
+              <li>
+                <a class="nav-link" routerLink="/auth" (click)="remove()">
+                    <em class="nc-icon nc-notes"></em>
+                    <p>Se deconnecter</p>
+                </a>
+            </li>
+             
+             
+          </ul>
+      </div>
+  </div>
+<div class="main-panel">
+  <div class="content">
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-md-12">
+<section class="signup">
+<div class="container"> 
+    <div class="signup-content">
+        <form method="POST" id="signin-form" class="signin-form">
+            <h2 class="form-title">Depot d'argent</h2>
+            <div class="form-group">
+                <input [(ngModel)]="loginUserData.numeroCompte" type="string" class="form-input" name="name" id="name" placeholder="Numero Compte"/>
+            </div>
+            <div class="form-group">
+                <input [(ngModel)]="loginUserData.montant" type="integer" class="form-input" name="email" id="email" placeholder="Montant du depot"/>
+            </div>
+          
+            <div class="form-group">
+            <button (click)="loginUser()" class="btn" class="form-submit"  id="submit" type="submit" name="submit">Effectuer depot</button>
+            </div>
+        </form>
+     
+    </div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+</div>

@@ -1,0 +1,63 @@
+<div class="wrapper">
+  <div class="sidebar" data-image="/../../../assets/img/sidebar-5.jpg">
+      <!--
+  Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+  Tip 2: you can also add an image using data-image tag
+-->
+      <div class="sidebar-wrapper">
+          <div class="logo">
+              <a class="simple-text">
+                  Creative Tim
+              </a>
+          </div>
+          <ul class="nav">
+          
+              <li>
+                  <a class="nav-link" routerLink="/envoi_argent">
+                      <i class="nc-icon nc-circle-09"></i>
+                      <p>Envoie Argent</p>
+                  </a>
+              </li>
+              <li class="nav-item active">
+                  <a class="nav-link" routerLink="/retrait_argent">
+                      <i class="nc-icon nc-notes"></i>
+                      <p>Retirer Argent</p>
+                  </a>
+              </li>
+              <li>
+                <a class="nav-link" routerLink="/auth" (click)="remove()">
+                    <em class="nc-icon nc-notes"></em>
+                    <p>Se deconnecter</p>
+                </a>
+            </li>
+             
+          </ul>
+      </div>
+  </div>
+<div class="main-panel">
+  <div class="main-panel">
+          <div class="content">
+                  <div class="container-fluid">
+                      <div class="row">
+                          <div class="col-md-12">
+<section class="signup">
+
+  <div class="container"> 
+      <div class="signup-content">
+          <form method="POST" #f="ngForm" >
+              <h2 class="form-title">Envoi Argent</h2>
+              <div class="form-group">
+                  <input [(ngModel)]="loginUserData.coderetrait" name="name" id="name" type="number" class="form-input"   placeholder="Entrez le code transfert"/>
+              <br>
+              <button (click)="loginUser()" class="form-submit"  id="submit" type="submit" name="submit">Envoyer</button>
+              <br>
+          
+          </div>
+             </form>
+             <ul></ul>
+           </div> 
+          </div>
+       </section> 
+      </div></div></div></div></div></div></div>
+
