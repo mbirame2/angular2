@@ -10,10 +10,10 @@ export class RetraitargentComponent implements OnInit {
 
   public nomcompletreceveur;
   private INE;
-  public code;
+
   public toke;
 
-   loginUserData = {coderetrait :null};
+   loginUserData = {coderetrait :null,codetransfert:null};
   constructor(private _auth: AuthService){}
    ngOnInit(){
  
@@ -24,12 +24,8 @@ export class RetraitargentComponent implements OnInit {
   loginUser(){
     this._auth.testretrait(this.loginUserData ).subscribe(
       res => {console.log(res);
-            this.nomcompletreceveur=res.body.nomcompletReceveur;
-            this.INE=res.body.pieceidReceveur; 
-            this.loginUserData.coderetrait=res.body.codeTransfert;
-            console.log(this.loginUserData)
-            this.finalisons( this.loginUserData)
-            if(res.body.nomcompletReceveur){
+           
+            if(res.body.status!="retrait" && res.body.nomcompletReceveur){
             Swal.fire({
          
               type: 'info',
@@ -49,6 +45,7 @@ export class RetraitargentComponent implements OnInit {
               confirmButtonColor: '#3085d6',
               cancelButtonColor: '#d33',
               confirmButtonText: 'Confirmer le retrait'
+              
             }).then((result) => {
               if (result.value) {
                 Swal.fire(
@@ -56,16 +53,16 @@ export class RetraitargentComponent implements OnInit {
                 'Transaction éffectué avec succés',
                 'success'
                )}
-               Swal.mixin({
-                 position: 'top-end',
-                 showConfirmButton: false,
-                 type: 'success',
-                 title: 'Retrait éffectué avec succés'
-               })
-               this.finalisons(res.body.codeTransfert);
-              
+              this.loginUserData.codetransfert=res.body.codeTransfert;
+               this.finalisons();
             })
-     }else{
+     }else if(res.body.status=="retrait" && res.body.nomcompletReceveur){
+      Swal.fire(
+        'Erreur lors de l enregistrement',
+        'Veillez verifier le code entrée'+
+        'NB : Un code de transfert ne peut pas etre utiliser deux fois',
+        'error' 
+      )}else{
       Swal.fire(
         'Echec ! ',
         'Le code saisi est incorecte. Vérifier à nouveau.',
@@ -73,10 +70,12 @@ export class RetraitargentComponent implements OnInit {
        )
      }}
       ,err =>{console.log(err) ;
-      
+        
       }
     )
   }
+ 
+  
   remove(){
     this._auth.deletetoken();
     console.log( this._auth.tokendougna());
@@ -84,8 +83,8 @@ export class RetraitargentComponent implements OnInit {
      this._auth.setRoles('aukine');
      console.log( this._auth.roles);
   }
-  finalisons(code){
-    this._auth.finaliser(code).subscribe(
+  finalisons(){
+    this._auth.finaliser(this.loginUserData).subscribe(
       res => {console.log(res);
 
      }

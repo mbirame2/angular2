@@ -1,3 +1,4 @@
+import  Swal  from 'sweetalert2';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 @Component({
@@ -24,9 +25,22 @@ export class EnvoiArgentComponent implements OnInit {
  loginUser(){
    this._auth.envoiArgent(this.loginUserData ).subscribe(
      res => {console.log(res);
-           
+     
     }
-     ,err =>{console.log(err)}
+     ,err =>{console.log(err)
+      if(err.status==200){
+        Swal.fire(
+          'Envoi avec succés',
+          ''+err.error.text,
+          'success'
+        )
+      }else{
+      Swal.fire(
+        'Erreur lors de l enregistrement',
+        'Veillez verifier la saisie de vos champs',
+        'error'
+      )
+    }}
    )
  }
 }

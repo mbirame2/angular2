@@ -16,7 +16,8 @@ import { RetraitargentComponent } from './Transaction/retraitargent/retraitargen
 import { ListeUtilisateurComponent } from './Partenaire/liste-utilisateur/liste-utilisateur.component';
 import { DepotComponent } from './depot/depot.component';
 import { CaissierComponent } from './caissier/caissier.component';
-
+import { ListePartenaireComponent } from './liste-partenaire/liste-partenaire.component';
+ 
 const appRoutes: Routes=[
   { path: 'signup' , component: SignupComponent},
   { path: 'auth' , component : SigninComponent},
@@ -27,14 +28,16 @@ const appRoutes: Routes=[
   { path: 'retrait_argent', component:RetraitargentComponent} ,
   { path: '', component:AcceuilComponent} ,
   {path: 'depot_caissier', component:DepotComponent} ,
-  {path: 'signcaissier', component:CaissierComponent}
+  {path: 'signcaissier', component:CaissierComponent} ,
+  { path:'liste_partenaire', component:ListePartenaireComponent}
+
 ] ;
 @NgModule({
   declarations: [ 
     AppComponent ,
     SigninComponent ,
     SignupComponent , 
-  AcceuilComponent, AjoutPartenaireComponent, EnvoiArgentComponent, RetraitargentComponent, ListeUtilisateurComponent,DepotComponent, CaissierComponent,
+  AcceuilComponent, AjoutPartenaireComponent, EnvoiArgentComponent, RetraitargentComponent, ListeUtilisateurComponent,DepotComponent, CaissierComponent, ListePartenaireComponent,
   ],
   imports: [
     BrowserModule,

@@ -25,6 +25,13 @@
                               <p>Ajout Partenaire</p>
                           </a>
                       </li>
+
+                      <li>
+                        <a class="nav-link" routerLink="/liste_partenaire">
+                            <em class="nc-icon nc-notes"></em>
+                            <p>Liste des Partenaires</p>
+                        </a>
+                    </li>
                 
                       <li>
                         <a class="nav-link" routerLink="/auth" (click)="remove()">
@@ -39,17 +46,33 @@
       </div>
   </div>
 
-  
-          <div class="main-panel">
-                  <div class="content">
-                          <div class="container-fluid">
-                              <div class="row">
-                                  <div class="col-md-12">
+  <div class="main-panel">
+        <nav class="navbar navbar-expand-lg " color-on-scroll="500">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#pablo"> Ajout Partenaire </a>
+                    <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                        
+                        <ul class="navbar-nav ml-auto">
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink="/auth">
+                                    <span class="no-icon">Log out</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
 <section class="signup">
 
 <div class="container">
     <div class="signup-content">
-        <form method="POST" id="signup-form" class="form" enctype="multipart/form-data">
+        <form method="POST" #f="ngForm">
             <h2 class="form-title">Creer un compte</h2>
             <div class="form-group">
                 <input [(ngModel)]="loginUserData.username" type="text" class="form-input" name="name" id="name" placeholder="Username du prestataire"/>
@@ -68,7 +91,7 @@
       </div>
       <div class="form-group">
         <input [(ngModel)]="loginUserData.ninea" type="number" class="form-input" name="name" id="name" placeholder="NINEA de l'entreprise"/>
-    </div>
+    </div> 
           <div class="form-group">
               <div class="card-panel teal lighten-2">
                   <h4 class="center white-text">
@@ -94,8 +117,8 @@
     </div>
 </div>
 </section>
-
-</div></div></div></div></div></div>
+</div>
+</div>
 
 
 

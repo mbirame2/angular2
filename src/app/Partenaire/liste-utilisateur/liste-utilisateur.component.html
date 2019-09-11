@@ -93,8 +93,8 @@
                                                 <td>{{us.partenaire.ninea}}</td>
                                                 <td>{{us.partenaire.adresse}}</td>
                                                 <td>{{us.status}}</td>
-                                                <td><button  *ngIf="us.status=='Actif'"    (click)="bloquage(us.id)" class="btn btn-danger" routerLink="/liste_utilisateur">Bloquer</button>
-                                                <button *ngIf="us.status=='Inactif'" (click)="bloquage(us.id)"   class="btn btn-success" routerLink="/liste_utilisateur">Debloquer</button></td>
+                                                <td><button  *ngIf="us.status=='Actif'"    (click)="bloquage(us.id)" class="btn btn-danger" >Bloquer</button>
+                                                <button *ngIf="us.status=='Inactif'" (click)="bloquage(us.id)"   class="btn btn-success" >Debloquer</button></td>
                                               </tr>
                                              
                                             </tbody>

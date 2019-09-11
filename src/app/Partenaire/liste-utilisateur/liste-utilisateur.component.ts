@@ -28,7 +28,9 @@ export class ListeUtilisateurComponent implements OnInit {
   bloquage(id){
     this._auth.blok(id).subscribe(
       res=>
-      console.log(res+id) ,
+      {console.log(res+id)
+      this.ngOnInit();
+      } ,
       error => console.log(error)
       );
   }

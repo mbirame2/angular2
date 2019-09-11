@@ -1,5 +1,7 @@
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -32,8 +34,24 @@ export class SignupComponent implements OnInit {
   loginUser(){
     console.log(this.loginUserData)
     this._auth.loginUtilisateur(this.loginUserData ).subscribe(
-      res => {console.log(JSON.stringify(res)); }
-      ,err =>{console.log(JSON.stringify(err))}
+      res => {console.log(JSON.stringify(res));
+    
+     
+      }
+      ,err =>{console.log(JSON.stringify(err))
+        if(err.status!=200){
+        Swal.fire(
+          'Erreur lors de l enregistrement',
+          'Veillez verifier la saisie de vos champs',
+          'error'
+        )
+      }else {
+        Swal.fire(
+          'Ok',
+          'Enregistrement fait avec succés',
+          'success'
+        )
+      }}
     )
   }
 

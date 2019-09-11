@@ -1,5 +1,6 @@
 import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-depot',
   templateUrl: './depot.component.html',
@@ -24,8 +25,19 @@ export class DepotComponent implements OnInit {
     this._auth.depotcaissier(this.loginUserData ).subscribe(
       res => { //console.log(res.body.token);
    this._auth.saveToken(res.body.token);
+   Swal.fire(
+    'Ok',
+    'Depot éffectué avec succés',
+    'success'
+  )
      }
-      ,err =>{console.log(err)}
+      ,err =>{console.log(err)
+        Swal.fire(
+          'Erreur lors du depot',
+          'Veillez verifier le code saisie ou la somme entrée (>75000)',
+          'error'
+        )
+      }
     )
   }
 }

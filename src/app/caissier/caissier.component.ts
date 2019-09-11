@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../services/auth.service';
-import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-caissier',
@@ -28,8 +28,24 @@ export class CaissierComponent implements OnInit {
   loginUser(){
     console.log(this.loginUserData)
     this._auth.signcaissier(this.loginUserData ).subscribe(
-      res => {console.log(JSON.stringify(res)); }
-      ,err =>{console.log(JSON.stringify(err))}
+      res => {console.log(JSON.stringify(res));
+        
+      }
+      ,err =>{console.log(JSON.stringify(err))
+        if(err.status==200){
+          Swal.fire(
+            'Ok',
+            'Enregistrement fait avec succés',
+            'success'
+          )
+       
+        } else{
+        Swal.fire(
+          'Erreur lors de l enregistrement',
+          'Veillez verifier la saisie de vos champs',
+          'error'
+        )
+      }}
     )
   }
   remove(){

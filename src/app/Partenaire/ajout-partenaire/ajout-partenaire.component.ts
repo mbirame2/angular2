@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../../services/auth.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-ajout-partenaire',
   templateUrl: './ajout-partenaire.component.html',
@@ -20,6 +20,7 @@ export class AjoutPartenaireComponent implements OnInit {
   }
   ngOnInit() {
   }
+
   handleFileInput(file: FileList) {
     this.loginUserData.imageFile = file.item(0);
     const reader = new FileReader();
@@ -32,8 +33,24 @@ export class AjoutPartenaireComponent implements OnInit {
   loginUser(){
     console.log(this.loginUserData)
     this._auth.loginPartenaire(this.loginUserData ).subscribe(
-      res => {console.log(JSON.stringify(res)); }
-      ,err =>{console.log(JSON.stringify(err))}
+      res => {console.log(res)}
+      ,err =>{console.log(err)
+        if(err.status==200){
+          Swal.fire(
+            'Succés ! ',
+            'Partenaire ajouté avec succés. '+
+            'Voir le contrat : <a routerLink="pdf">ici</a>',
+            'success'
+           )
+       
+        } else{
+        Swal.fire(
+          
+          'Erreur lors de l enregistrement',
+          'Veillez verifier la saisie de vos champs',
+          'error'
+        )
+      }}
     )
   }
 

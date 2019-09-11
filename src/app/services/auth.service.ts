@@ -31,7 +31,6 @@ export class AuthService {
   }
   depotcaissier(user){
     return this.httpClient.post<any>("api/ajout_versement", user,{headers:this.headers,observe:'response'});
- 
   }
   loginPartenaire(user){
     const formData: FormData = new FormData();
@@ -58,10 +57,20 @@ export class AuthService {
     return this.httpClient.get("api/liste_user" ,{headers:this.headers,observe:'response'});
       
   }
+  listePartenaire():Observable<any>{
+    this.setId(this.headers);
+    console.log(this.headers)
+    return this.httpClient.get("api/liste_partenaire" ,{headers:this.headers,observe:'response'});
+      
+  }
   
   blok(id):Observable<any>{
     console.log(this.getId())
     return this.httpClient.put("api/user/bloquer_user/"+id+"",{},{headers:this.getId(),observe:'response'});
+  }
+  blokpart(id):Observable<any>{
+    console.log(this.getId())
+    return this.httpClient.put("api/partenaire/bloquer_partenaire/"+id+"",{},{headers:this.getId(),observe:'response'});
   }
   fall(){
     return this.headers;
